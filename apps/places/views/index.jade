@@ -1,0 +1,24 @@
+extends ../../../views/layout
+
+block body
+  .page
+    a.avant-garde-button.is-small( href='/places/new' )
+      | Create new place
+
+    hr
+
+    table.bordered-table
+      thead
+        tr
+          th Name
+          th Actions
+      tbody
+        for place in places
+          tr.place
+            td: a.place-name( href='/places/#{place.id}')
+              | #{place.name} #{place.featured ? '*' : ''}
+            td: a.avant-garde-button.is-dangerous.is-tiny(
+              href='/places/#{place.id}'
+              data-method='DELETE'
+              data-confirm='Are you certain?'
+            ) Delete

@@ -1,0 +1,35 @@
+extends ../../../views/layout
+
+block body
+  .page
+    a.avant-garde-button.is-small( href='/cities/new' )
+      | Create new city
+
+    hr
+
+    table.bordered-table
+      thead
+        tr
+          th Name
+          th Slug
+          th Featured?
+          th Sort Key
+          th Actions
+
+      tbody
+        for city in cities
+          tr.city
+            td: a.city-name( href='/cities/#{city.id}')
+              = city.name
+            td
+              = city.slug
+            td
+              = city.featured
+            td
+              = city.sort_key
+
+            td: a.avant-garde-button.is-dangerous.is-tiny(
+              href='/cities/#{city.id}'
+              data-method='DELETE'
+              data-confirm='Are you certain?'
+            ) Delete

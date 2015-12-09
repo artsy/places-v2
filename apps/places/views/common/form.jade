@@ -1,0 +1,22 @@
+.map-container
+  .map.js-map
+    //- Rendered client-side
+
+.form-container
+  form.stacked-form.js-form
+    if place._id
+      input( type='hidden', name='_id', value= place._id )
+
+    label.avant-garde-form-label( for='name' )
+      | Name
+    input.bordered-input( name='name', placeholder='Name', required, value= place.name )
+
+    //- input.bordered-input( name='slug', placeholder='Slug', required, value= place.slug )
+
+    label.avant-garde-form-label( for='coordinates' )
+      | Coordinates
+    textarea.bordered-input( name='coordinates', rows='10' required, placeholder='Coordinates' )
+      = JSON.stringify(place.coordinates, undefined, 2)
+
+    button.avant-garde-button-black.js-save
+      | Save
